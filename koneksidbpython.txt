@@ -1,0 +1,37 @@
+----- DI Python ---
+pip install mysql-connector-python
+
+import mysql.connector
+import mysql.connector
+import pandas as pd
+
+---- DI MYSQL ------
+CREATE DATABASE LogisticsDB;
+USE LogisticsDB;
+
+CREATE TABLE Logistics (
+ shipment_id INT AUTO_INCREMENT PRIMARY KEY,
+ product_name VARCHAR(100),
+ quantity INT,
+ shipment_location VARCHAR(100)
+);
+INSERT INTO Logistics (product_name, quantity, shipment_location) VALUES
+('Laptop', 50, 'Warehouse A'),
+('Smartphone', 200, 'Warehouse B'),
+('Tablet', 150, 'Warehouse C'),
+('Monitor', 75, 'Warehouse D');
+
+------ DI PYTHON ------
+
+conn = mysql.connector.connect(
+ host="localhost",
+ user="root",
+ password="nrfqrmnsql1#",
+ database="logisticsdb"
+)
+
+cursor.execute("SELECT * FROM logistics")
+result = cursor.fetchall()
+df = pd.DataFrame(result, columns=[col[0] for col in cursor.description])
+df
+
